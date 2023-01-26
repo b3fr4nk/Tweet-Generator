@@ -1,3 +1,5 @@
+import random
+
 def histogram(word_list):
     histogram = {}
 
@@ -29,11 +31,26 @@ def get_words(file_path):
 
     return word_list
 
+def sample(histogram):
+    keys = list(histogram.keys())
+    values = []
+    weight = 0
+    for word in keys:
+        weight += histogram[word]
+        values.append(weight)
+
+    choice = random.choices(keys, cum_weights=values)
+
+    return choice[0]
 if __name__ == "__main__":
 
-    words = get_words("data/dickens.txt")
+    words = get_words("data/test.txt")
 
     hg = histogram(words)
 
-    print(hg)
-    print(frequency(hg, "one"))
+    samples = []
+    for i in range (10000):
+        samples.append(sample(hg))
+
+    samples_histogram = histogram(samples)
+    print(samples_histogram)
