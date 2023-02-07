@@ -25,9 +25,10 @@ class Listogram(list):
         i = self.index_of(word)
 
         if i is not None:
-            self[i][1] += count
+            cur_count = self[i][1]
+            self[i] = (word, cur_count + count)
         else:
-            self.append([word, count])
+            self.append((word, count))
 
         self.tokens += count
         self.types = len(self)
@@ -37,7 +38,10 @@ class Listogram(list):
         # TODO: Retrieve word frequency count
         i = self.index_of(word)
 
-        return self[i][1]
+        if i is not None:
+            return self[i][1]
+
+        return 0
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
