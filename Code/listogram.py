@@ -17,14 +17,17 @@ class Listogram(list):
         if word_list is not None:
             for word in word_list:
                 self.add_count(word)
-                self.append(tuple(word, 0))
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        
         i = self.index_of(word)
 
-        self[i][1] += count
+        if i is not None:
+            self[i][1] += count
+        else:
+            self.append([word, count])
 
         self.tokens += count
         self.types = len(self)
@@ -41,7 +44,7 @@ class Listogram(list):
         # TODO: Check if word is in this histogram
         i = self.index_of(word)
 
-        if i != -1:
+        if i is not None:
             return True
         return False
 
@@ -49,8 +52,10 @@ class Listogram(list):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
         # TODO: Implement linear search to find index of entry with target word
+        print(self)
         for i in range(len(self)):
-            if self[i][0] == word:
+            print(f'{self[i][0]} {target}')
+            if self[i][0] == target:
                 return i
         return None
 
