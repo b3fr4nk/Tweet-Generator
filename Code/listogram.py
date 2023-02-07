@@ -54,11 +54,25 @@ class Listogram(list):
                 return i
         return None
 
-    def sample(self):
+    def sample(self, num_words=1):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
+        keys = []
+        values = []
+        weight = 0
+        for word, count in self:
+            weight += count
+            values.append(weight)
+            keys.append(word)
 
+        choices = random.choices(keys, cum_weights=values, k=num_words)
+
+        text = ""
+        for choice in choices:
+            text += f"{choice}"
+
+        return text
 
 def print_histogram(word_list):
     print()
