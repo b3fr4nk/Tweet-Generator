@@ -125,6 +125,9 @@ class LinkedList:
         prev = None
         current = self.head
 
+        if self.is_empty():
+            raise ValueError('item not found: {}'.format(item))
+        
         while current.data != item:
             prev = current
             current = current.next
