@@ -70,7 +70,7 @@ class LinkedList:
         # TODO: Else append node after tail
         new_node = Node(item)
         
-        if self.is_empty:
+        if self.is_empty() == True:
             self.head = new_node
         
         else:
@@ -110,7 +110,7 @@ class LinkedList:
             if current is None:
                 return False
 
-        return True
+        return current.data
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -129,9 +129,18 @@ class LinkedList:
             prev = current
             current = current.next
             if current is None:
-                raise Exception(ValueError('item not found: {}'.format(item)))
+                raise ValueError('item not found: {}'.format(item))
+        if prev is None:
+            self.head = current.next
 
-        prev.next = current.next
+        if current.next is None:
+            self.tail = prev
+
+        if prev is not None:
+            prev.next = current.next
+
+        
+            
 
 
 def test_linked_list():
@@ -146,6 +155,9 @@ def test_linked_list():
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
+
+    print('testing find')
+    print(ll.find('C'))
 
     # Enable this after implementing delete method
     delete_implemented = True
