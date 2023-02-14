@@ -142,6 +142,16 @@ class LinkedList:
         if prev is not None:
             prev.next = current.next
 
+    def replace(self, item, new_item):
+
+        current = self.head
+        while current.data != item:
+            current = current.next
+            if current is None:
+                return False
+
+        current.data = new_item
+
 def test_linked_list():
     ll = LinkedList()
     print('list: {}'.format(ll))
