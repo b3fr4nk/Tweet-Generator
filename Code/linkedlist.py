@@ -110,7 +110,7 @@ class LinkedList:
             if current is None:
                 return False
 
-        return current.data
+        return True
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -139,10 +139,6 @@ class LinkedList:
         if prev is not None:
             prev.next = current.next
 
-        
-            
-
-
 def test_linked_list():
     ll = LinkedList()
     print('list: {}'.format(ll))
@@ -155,9 +151,6 @@ def test_linked_list():
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
-
-    print('testing find')
-    print(ll.find('C'))
 
     # Enable this after implementing delete method
     delete_implemented = True
