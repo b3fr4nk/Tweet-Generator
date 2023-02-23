@@ -135,7 +135,7 @@ class Markov(Dictogram):
         return sentence
     
 if(__name__ == '__main__'):
-    chain = Markov(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish.'])
+    chain = Markov(['I', 'like', 'dogs', 'and', 'you', 'like', 'dogs.', 'I', 'like', 'cats', 'but', 'you', 'hate', 'cats.'])
 
     print(chain.walk())
     
