@@ -134,12 +134,13 @@ class HashTable(object):
         self.buckets[index]
         value = self.get(key)
         self.buckets[index].delete((key, value))
-        
+
         
         
 def test_hash_table():
     ht = HashTable()
     print('hash table: {}'.format(ht))
+
 
     print('\nTesting set:')
     for key, value in [('I', 1), ('V', 5), ('X', 10)]:
