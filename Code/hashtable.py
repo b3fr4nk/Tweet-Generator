@@ -136,6 +136,7 @@ class HashTable(object):
         self.buckets[index].delete((key, value))
         
         
+        
 def test_hash_table():
     ht = HashTable()
     print('hash table: {}'.format(ht))
