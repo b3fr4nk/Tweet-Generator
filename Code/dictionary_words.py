@@ -1,8 +1,8 @@
 import random
 import argparse
 
-def get_words_list():
-    file = open("/usr/share/dict/words", 'r')
+def get_words_list(file="/usr/share/dict/words"):
+    file = open(file, 'r')
     all_words = file.readlines()
     output = []
 

@@ -1,55 +1,6 @@
 from dictogram import Dictogram
 import random
 
-# class Markov():
-#     def __init__(self, word_list):
-#         self.states = []
-
-#         self.states.append(State(word_list[-1]))
-#         for i in range(len(word_list)-2, 0, -1):
-#             state_index = len(word_list) - i + 1
-#             self.states.append(word_list[i], self.states[state_index])
-
-#         self.start_state = self.states[0]
-
-#     def walk(self, start=None, sentence=""):
-#         sentence_enders = ".!?"
-#         if start == None:
-#             start = self.start_state
-        
-#         word = self.states[start].sample()
-#         sentence += f' {word}'
-
-#         if sentence_enders not in word:
-#             self.walk(next=start.sample(), sentence=sentence)
-#         else:
-#             return sentence
-
-# class State(Dictogram):
-#     def __init__(self, word=None, next_state=None):
-#         super().__init__(word)
-#         self.next = {}
-#         self.word = 
-
-#         for state in next_state:
-#             self.add_state(state)
-
-#     def add_count(self, word, count=1):
-#         if word == self.word:
-#             return super().add_count(word, count)
-
-#     def add_state(self, state):
-#         #TODO make self.next will contain key value with key being the word, and value a tuple of number of times occured and transition chance
-#         self.next[state.word] = (State, self.calc_trans_chance(state))
-
-#         self.transition.append(tuple(state, state.frequency(self.word) / self.frequency(self.word)))
-
-#     def calc_trans_chance(self, state):
-#         return self.next[state].frequency[self.word] / self.frequency(self.word)
-
-#     def sample(self):
-#         return super().sample(1)
-
 class Markov(Dictogram):
     def __init__(self, word_list=None):
         """Initialize this histogram as a new dict and count given words."""
